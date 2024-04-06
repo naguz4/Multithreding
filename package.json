@@ -1,0 +1,26 @@
+{
+  "name": "01",
+  "version": "1.0.0",
+  "description": "",
+  "main": "rollup.config.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rollup -c",
+    "update-ifcjs": "npm i web-ifc-three@latest && npm i && copy-wasm",
+    "copy-wasm": "cpy node_modules/web-ifc/web-ifc.wasm . && cpy node_modules/web-ifc/web-ifc-mt.wasm ."
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.1.4"
+  },
+  "dependencies": {
+    "cpy-cli": "^5.0.0",
+    "three": "^0.135.0",
+    "three-mesh-bvh": "^0.5.14",
+    "web-ifc-three": "^0.0.126",
+    "web-ifc-viewer": "^1.0.218"
+  }
+}
