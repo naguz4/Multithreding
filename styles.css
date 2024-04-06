@@ -8,27 +8,16 @@ html, body {
     overflow: hidden;
 }
 
-.ifc-property-menu {
-    border: 1px solid gray;
-    width: 20rem;
+#text-container{
     position: absolute;
-    background-color: white;
+    margin-top: 2rem;
 }
 
-.ifc-property-item {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    padding: 0.5rem;
-    border-bottom: solid 1px gray;
+#file-input{
+    position: absolute;
 }
 
-.ifc-property-value {
-    width: 100%;
-    text-align: right;
-}
-
-#viewer-container {
+#viewer-container{
     position: fixed;
     top: 0;
     left: 0;
