@@ -8,6 +8,7 @@ import {
   WebGLRenderer,
 } from "three";
 import { OrbitControls } from "three/examples/jsm/controls/OrbitControls.js";
+import { IFCBUILDINGSTOREY } from "web-ifc";
 import {IFCLoader} from "web-ifc-three";
 
 //Creates the Three.js scene
@@ -76,10 +77,36 @@ window.addEventListener("resize", () => {
 
 const loader = new IFCLoader();
 
+let model;
+
 const input = document.getElementById("file-input");
 input.addEventListener(`change`, async () => {
   const file = input.files[0];
   const url = URL.createObjectURL(file);
   const model = await loader.loadAsync(url);
   scene.add(model);
+  await editFloorName();
 })
+
+async function editFloorName() {
+  const storeysIds = await loader.ifcManager.getAllItemsOfType(0, IFCBUILDINGSTOREY, false);
+  const firstStoreyID = storeysIds[0];
+  const storey = await loader.ifcManager.getItemProperties(0, firstStoreyID);
+  console.log(storey)
+
+  const result = prompt("Introduce the new name for the storey.")
+  storey.LongName.value = result;
+  loader.ifcManager.ifcAPI.WriteLine(0, storey);
+
+  const data = await loader.ifcManager.ifcAPI.ExportFileAsIFC(0);
+  const blob = new Blob ([data]);
+  const file = new File([blob], "modified.ifc");
+
+  const link = document.createElement(`a`);
+  link.download = `modified.ifc`;
+  link.href = URL.createObjectURL(file);
+  document.body.appendChild(link);
+  link.click();
+
+  link.remove();
+}
