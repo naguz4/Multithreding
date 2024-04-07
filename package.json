@@ -1,0 +1,29 @@
+{
+  "name": "multithreding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "rollup -c",
+    "watch": "rollup -c -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naguz4/Multithreding.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/naguz4/Multithreding/issues"
+  },
+  "homepage": "https://github.com/naguz4/Multithreding#readme",
+  "devDependencies": {
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "rollup": "^4.14.1"
+  },
+  "dependencies": {
+    "three": "^0.135.0",
+    "web-ifc-three": "^0.0.117"
+  }
+}
